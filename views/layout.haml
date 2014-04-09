@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %title
+      Spotify2Tube | Convert Spotify Links into Youtube Links!
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "//fonts.googleapis.com/css?family=Montserrat+Alternates", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "style.css", :rel => "stylesheet", :type => "text/css"}/
+    %meta{:name => "description", :content => "Quickly convert your Spotify URLs and URIs into Youtube Links so you can share them easily around the web."}/
+    %meta{:property => "og:title", :content => "Spotify2Tube | Convert Spotify Links into Youtube Links!"}/
+    %meta{:property => "og:description", :content => "Quickly convert your Spotify URLs and URIs into Youtube Links so you can share them easily around the web."}/
+    %meta{:property => "og:type", :content => "website"}/
+    %meta{:property => "og:url", :content => "#{request.url}"}/
+    %meta{:property => "og:image", :content => "https://s3.amazonaws.com/f.cl.ly/items/1T1U1V0Z1D3S3l3q2R0C/Profile%20Photo.png"}/
+    %meta{:name => "twitter:url", :content => "#{request.url}"}/
+    %meta{:name => "twitter:title", :content => "Spotify2Tube | Convert Spotify Links into Youtube Links!"}/
+    %meta{:name => "twitter:description", :content => "Quickly convert your Spotify URLs and URIs into Youtube Links so you can share them easily around the web."}/
+    %meta{:name => "twitter:image", :content => "https://s3.amazonaws.com/f.cl.ly/items/1T1U1V0Z1D3S3l3q2R0C/Profile%20Photo.png"}/
+  %body
+    .container-fluid
+      #app
+        %a.logo{:href => request.base_url}
+          %img.img-responsive.logo{:alt => "Spotify 2 Tube Logo", :src => "//s3.amazonaws.com/f.cl.ly/items/3Z1C2K0F2m2m3a2U0W0q/Spotify2TubeLogoLight.png"}
+        = yield
+
+        #latest
+          %hr
+          %h4 Latest 10 Spotify to YouTube link converts:
+          %ol.rounded-list
+            - @latest.each do |track|
+              - track = track.split("::")
+              %li
+                %a{:href => "#{request.base_url}/fetch?query=spotify:track:#{URI.escape(track[1])}"}
+                  =track[0]

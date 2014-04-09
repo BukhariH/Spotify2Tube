@@ -1,0 +1,21 @@
+- if flash[:notice]
+	.alert.alert-warning
+		= flash[:notice]
+%form#searchform.field{:action => "/fetch", :method => "get"}
+	%input#searchterm{:placeholder => "Enter in the Spotify URI or HTTP Link", :type => "text", :name => "query"}/
+	%button#search{:type => "submit"} Convert!
+- if @video_id
+	%h3
+		= @track
+	.alert.alert-success
+		#link
+			%img{:height => "16", :src => "//www.spotify.com/favicon.ico", :width => "16"}
+			Link to Spotify Track:
+			%a{:href => "https://open.spotify.com/track/#{@spotify_id}", :target => "_blank"}= "https://open.spotify.com/track/#{@spotify_id}"
+	.alert.alert-success
+		#link
+			%img{:height => "16", :src => "https://www.youtube.com/favicon.ico", :width => "16"}
+			Link to YouTube Video:
+			%a{:href => "//www.youtube.com/watch?v=#{@video_id}", :target => "_blank"}= "https://www.youtube.com/watch?v=#{@video_id}"
+	.video-container
+		%iframe{:allowfullscreen => "", :frameborder => "0", :height => "720", :src => "//www.youtube-nocookie.com/embed/#{@video_id}", :width => "960"}
