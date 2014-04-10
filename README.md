@@ -16,7 +16,7 @@ You can find it online at:
 
 1. Clone Repo
 
-	```ruby
+	```bash
 	git clone git@github.com:BukhariH/Spotify2Tube.git
 	```
 
