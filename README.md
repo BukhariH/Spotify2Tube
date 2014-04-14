@@ -10,8 +10,8 @@ You can find it online at:
 
 
 ## The 3 Step Setup
-	- Make sure you have a Redis server up and running (You edit the values in the app.rb file)
-	- If you want caching to work then you will also want Memcache servers running (You can edit values in the config.ru)
+- Make sure you have a Redis server up and running (You edit the values in the app.rb file)
+- If you want caching to work then you will also want Memcache servers running (You can edit values in the config.ru)
 
 
 1. Clone Repo
